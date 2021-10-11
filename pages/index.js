@@ -39,7 +39,7 @@ export default function Home() {
               <li class="rounded-lg bg-indigo-900 p-6 relative">
                 <div class="mb-4 flex justify-between text-indigo-200">
                   <p class="text-xs text-right">0x45638739...</p>
-                  <p class="text-xs text-right">19th September 2021</p>
+                  <p class="text-xs text-right">10th October 2021</p>
                 </div>
                 <article>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum diam iaculis lacinia tempor. Aliquam rhoncus lacus quis orci molestie, quis ultrices augue tempus. Donec rhoncus tortor dolor, sit amet iaculis nulla pretium vitae. In ultricies ultrices ligula, eget commodo massa tempor nec.</p>
@@ -54,8 +54,8 @@ export default function Home() {
               </li>
               <li class="rounded-lg bg-indigo-900 p-6">
                 <div class="mb-4 flex justify-between text-indigo-200">
-                  <p class="text-xs text-right">0x45638739...</p>
-                  <p class="text-xs text-right">19th September 2021</p>
+                  <p class="text-xs text-right">0x98787654...</p>
+                  <p class="text-xs text-right">11th October 2021</p>
                 </div>
                 <article>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum diam iaculis lacinia tempor. Aliquam rhoncus lacus quis orci molestie, quis ultrices augue tempus. Donec rhoncus tortor dolor, sit amet iaculis nulla pretium vitae. In ultricies ultrices ligula, eget commodo massa tempor nec.</p>
