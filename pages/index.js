@@ -13,20 +13,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full max-w-screen-xl mx-auto text-white flex flex-col justify-center pt-24 px-6 font-body">
+      <main className="w-full max-w-screen-xl mx-auto text-white flex flex-col justify-center py-24 px-6 font-body">
         <header class="text-center mb-20">
           <h1 class="text-4xl font-display mb-6">Adventures in Ethereum</h1>
           <p class="text-xl tracking-wide">What happens next?</p>
         </header>
 
-        <div class="grid grid-cols-2 gap-8 divide-x divide-dashed">
+        <div class="grid md:grid-cols-2 gap-8 md:divide-x md:divide-dashed">
           <div class="col-span-1">
             <h2 class="font-display">Create your snippet</h2>
             <label class="block text-gray-700 my-8">
               <span class="sr-only">Snippet</span>
               <textarea class="mt-1 block w-full p-3 rounded-lg bg-indigo-900 resize-none text-white placeholder-indigo-200" rows="6" placeholder="Add snippet..."></textarea>
             </label>
-            <button class="w-full sm:w-auto flex-none bg-pink-500 hover:bg-pink-600 text-white text-lg leading-6 font-semibold py-3 px-6 border border-transparent rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-pink-600 focus:outline-none transition-colors duration-200 inline-flex items-center">
+            <button class="w-full sm:w-auto flex-none bg-pink-500 hover:bg-pink-600 text-white text-lg leading-6 font-semibold py-3 px-6 border border-transparent rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-pink-600 focus:outline-none transition-colors duration-200 inline-flex items-center justify-center">
               <span class="mr-3">Let's go!</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
