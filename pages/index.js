@@ -20,7 +20,7 @@ export default function Home() {
           <p class="text-xl tracking-wide">What happens next?</p>
         </header>
 
-        <div class="grid md:grid-cols-2 gap-8 md:divide-x md:divide-dashed">
+        <div class="grid md:grid-cols-2 gap-12 md:divide-x md:divide-dashed">
           <div class="col-span-1">
             <h2 class="font-display">Create your snippet</h2>
             <label class="block text-gray-700 my-8">
@@ -34,7 +34,7 @@ export default function Home() {
               </svg>
             </button>
           </div>
-          <div class="col-span-1 md:pl-6">
+          <div class="col-span-1 md:pl-12">
             <h2 class="font-display mb-8">Once upon a time...</h2>
             <ul class="text-white space-y-6">
               <li class="rounded-lg bg-indigo-900 p-6 relative">
@@ -46,7 +46,7 @@ export default function Home() {
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum diam iaculis lacinia tempor. Aliquam rhoncus lacus quis orci molestie, quis ultrices augue tempus. Donec rhoncus tortor dolor, sit amet iaculis nulla pretium vitae. In ultricies ultrices ligula, eget commodo massa tempor nec.</p>
                 </article>
                 <div class="w-full absolute inset-x-0 -bottom-8 inline-flex justify-center">
-                  <div class="rounded-full bg-pink-500 p-2">
+                  <div class="rounded-full bg-pink-500 shadow-lg p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
                     </svg>
