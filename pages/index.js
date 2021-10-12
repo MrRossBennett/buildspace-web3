@@ -10,6 +10,7 @@ export default function Home() {
   */
   const [currentAccount, setCurrentAccount] = useState("");
   const [allSnippets, setAllSnippets] = useState([]);
+  const [isMining, setIsMining] = useState(false);
 
   /**
    * Create a variable here that holds the contract address after you deploy!
@@ -83,9 +84,12 @@ export default function Home() {
         console.log("Retrieved total snippet count...", count.toNumber());
 
         const adventureTxn = await adventurePortalContract.createSnippet(event.target.snippet.value);
+        setIsMining(true)
         console.log("Mining...", adventureTxn.hash);
 
         await adventureTxn.wait();
+        setIsMining(false)
+        event.target.reset();
         console.log("Mined -- ", adventureTxn.hash);
 
         count = await adventurePortalContract.getTotalSnippets();
@@ -184,17 +188,40 @@ export default function Home() {
                 <span className="sr-only">Snippet</span>
                 <textarea name="snippet" className="mt-1 block w-full p-3 rounded-lg bg-indigo-900 resize-none text-white placeholder-indigo-200 border" rows="6" placeholder="Add snippet..."></textarea>
               </label>
-              <button className="w-full sm:w-auto flex-none bg-pink-500 hover:bg-pink-600 text-white text-lg leading-6 font-semibold py-3 px-6 border border-transparent rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-pink-600 focus:outline-none transition-colors duration-200 inline-flex items-center justify-center" type="submit">
-                <span className="mr-3">Let's go!</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
-              </button>
+              <div className="flex items-center">
+                <button className="w-full sm:w-auto flex-none bg-pink-500 hover:bg-pink-600 text-white text-lg leading-6 font-semibold py-3 px-6 border border-transparent rounded-xl focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-pink-600 focus:outline-none transition-colors duration-200 inline-flex items-center justify-center" type="submit">
+                  <span className="mr-3">Let's go!</span>
+                  {!isMining && (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                    </svg>
+                  )}
+                  {isMining && (
+                    <svg className="animate-spin ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  )}
+                </button>
+              </div>
             </form>
           </div>
           <div className="col-span-1 md:pl-12">
             <h2 className="font-display mb-8">Once upon a time...</h2>
             <ul className="text-white space-y-6">
+              {isMining && (
+                <li className="rounded-lg bg-indigo-900 p-6 relative">
+                  <div className="animate-pulse flex">
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="h-4 bg-indigo-700 rounded w-3/4"></div>
+                      <div className="space-y-2">
+                        <div className="h-4 bg-indigo-700 rounded"></div>
+                        <div className="h-4 bg-indigo-700 rounded w-5/6"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )}
               {allSnippets.map((snippet, index) => {
                 return (
                   <li className="rounded-lg bg-indigo-900 p-6 relative" key={index}>
@@ -205,13 +232,15 @@ export default function Home() {
                     <article>
                       <p>{snippet.message}</p>
                     </article>
-                    <div className="w-full absolute inset-x-0 -bottom-7 inline-flex justify-center z-40">
-                      <div className="rounded-full bg-pink-500 shadow-lg p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
-                        </svg>
+                    {index !== allSnippets.length - 1 && (
+                      <div className="w-full absolute inset-x-0 -bottom-7 inline-flex justify-center z-40">
+                        <div className="rounded-full bg-pink-500 shadow-lg p-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+                          </svg>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </li>)
               })}
             </ul>
