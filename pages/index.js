@@ -83,7 +83,7 @@ export default function Home() {
         let count = await adventurePortalContract.getTotalSnippets();
         console.log("Retrieved total snippet count...", count.toNumber());
 
-        const adventureTxn = await adventurePortalContract.createSnippet(event.target.snippet.value);
+        const adventureTxn = await adventurePortalContract.createSnippet(event.target.snippet.value, { gasLimit: 300000 });
         setIsMining(true)
         console.log("Mining...", adventureTxn.hash);
 
@@ -134,6 +134,19 @@ export default function Home() {
          * Store our data in React State
          */
         setAllSnippets(sortedSnippets)
+
+        /**
+       * Listen in for emitter events!
+       */
+        adventurePortalContract.on("NewSnippet", (from, timestamp, message) => {
+          console.log("NewSnippet", from, timestamp, message);
+
+          setAllSnippets(prevState => [...prevState, {
+            address: from,
+            timestamp: new Date(timestamp * 1000),
+            message: message
+          }]);
+        });
       } else {
         console.log("Ethereum object doesn't exist!")
       }
